@@ -1,0 +1,61 @@
+@import './_variables.scss';
+
+* {
+	padding: 0;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	&:before,
+	&:after {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	}
+}
+
+* ::-webkit-input-placeholder {
+	color: #c0c0c0;
+	opacity: 1;
+}
+
+* ::-moz-placeholder {
+	color: #c0c0c0;
+	opacity: 1;
+}
+
+* ::-ms-input-placeholder {
+	color: #c0c0c0;
+	opacity: 1;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	min-width: 320px;
+	font-size: 16px;
+	line-height: 1.65;
+	font-family: $default-font;
+	color: #fff;
+	background-color: $black;
+	overflow-x: hidden;
+}
+
+img {
+	max-width: 100%;
+}
+
+.img-responsive {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+#root {
+	height: 100%;
+}
