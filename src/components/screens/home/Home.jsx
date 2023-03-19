@@ -7,7 +7,7 @@ function Home() {
 
 	return (
 		<Layout>
-			<div className='Home'></div>
+			<div className='Home'>Главная</div>
 		</Layout>
 	)
 }
