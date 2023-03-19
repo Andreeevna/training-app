@@ -1,4 +1,4 @@
-// @import 'src/assets/styles/variables';
+@import 'src/assets/styles/variables';
 
 .header {
 	display: flex;
@@ -10,5 +10,10 @@
 		border: none;
 		outline: none;
 		cursor: pointer;
+
+		> svg > path {
+			fill: #fff;
+			font-size: 32px;
+		}
 	}
 }
