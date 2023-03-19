@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import React from 'react'
-import styles from './Hamburger.module.scss'
+import styles from './Hamburger.module.sass'
 import { menu } from './menu.data'
 
 const Menu = ({ isShow }) => {

@@ -3,7 +3,7 @@ import { ImArrowLeft } from 'react-icons/im'
 import { useAuth } from '../../../hooks/useAuth'
 import Hamburger from '../hamburger/Hamburger'
 
-import styles from './Header.module.scss'
+import styles from './Header.module.sass'
 
 const Header = ({ backlink }) => {
 	const { isAuth } = useAuth()

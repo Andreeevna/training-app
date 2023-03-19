@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { DiGhostSmall } from 'react-icons/di'
 import { IoClose } from 'react-icons/io5'
 
-import styles from './Hamburger.module.scss'
+import styles from './Hamburger.module.sass'
 import Menu from './Menu'
 
 const Hamburger = () => {
