@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
-import { DiGhostSmall } from 'react-icons/di'
+import { CgMenuRight } from 'react-icons/cg'
 import { IoClose } from 'react-icons/io5'
+
+import { useOnClickOutside } from '../../../hooks/useOnClickOutside'
 
 import styles from './Hamburger.module.scss'
 import Menu from './Menu'
 
 const Hamburger = () => {
-	const [isShow, setIsShow] = useState(false)
+	const { isShow, ref, setIsShow } = useOnClickOutside(false)
 
 	return (
-		<div className={styles.wrapper}>
+		<div className={styles.wrapper} ref={ref}>
 			<button onClick={() => setIsShow(!isShow)}>
-				{isShow ? <IoClose color='white' /> : <DiGhostSmall color='white' />}
+				{isShow ? <IoClose color='white' /> : <CgMenuRight color='white' />}
 			</button>
 			<Menu isShow={isShow} />
 		</div>
