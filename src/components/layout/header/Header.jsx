@@ -26,7 +26,7 @@ const Header = ({ backlink }) => {
 			) : (
 				<button
 					onClick={() => {
-						navigate('/profile')
+						navigate(isAuth ? '/profile' : '/auth')
 					}}
 				>
 					<SlUser fill='#fff' fontSize={25} />
