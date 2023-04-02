@@ -1,6 +1,9 @@
 import { useMutation } from '@tanstack/react-query'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+
+import { useAuth } from '../../../hooks/useAuth'
 
 import authServices from '../../../services/auth.services'
 import Layout from '../../layout/Layout'
@@ -21,6 +24,15 @@ const Auth = () => {
 	} = useForm({
 		mode: 'onChange'
 	})
+
+	const { isAuth } = useAuth()
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (isAuth) {
+			navigate('/')
+		}
+	}, [isAuth])
 
 	const { mutate, isLoading } = useMutation(
 		['auth'],
