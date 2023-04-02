@@ -1,54 +1,14 @@
-import { useMutation } from '@tanstack/react-query'
-import { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
-
-import { useAuth } from '../../../hooks/useAuth'
-
-import authServices from '../../../services/auth.services'
 import Layout from '../../layout/Layout'
 import Loader from '../../ui/Loader'
 import Button from '../../ui/button/Button'
 import Field from '../../ui/field/Field'
 
 import styles from './Auth.module.scss'
+import { useAuthPage } from './useAuthPage'
 
 const Auth = () => {
-	const [type, setType] = useState('login')
-
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-		reset
-	} = useForm({
-		mode: 'onChange'
-	})
-
-	const { isAuth } = useAuth()
-	const navigate = useNavigate()
-
-	useEffect(() => {
-		if (isAuth) {
-			navigate('/')
-		}
-	}, [isAuth])
-
-	const { mutate, isLoading } = useMutation(
-		['auth'],
-		({ email, password }) => authServices.main(email, password, type),
-		{
-			onSuccess: data => {
-				alert('success')
-				reset()
-			}
-		}
-	)
-
-	const onSubmit = data => {
-		mutate(data)
-	}
-
+	const { setType, register, handleSubmit, errors, isLoading, onSubmit } =
+		useAuthPage()
 	return (
 		<>
 			<Layout heading='Sign in' bgImage='/images/auth-bg.png' />
