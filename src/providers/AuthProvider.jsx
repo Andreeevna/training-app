@@ -1,6 +1,8 @@
 import React, { createContext, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
+import { TOKEN } from '../app.constans'
+
 export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
@@ -9,7 +11,7 @@ export const AuthProvider = ({ children }) => {
 	const { pathname } = useLocation()
 
 	useEffect(() => {
-		const token = Cookies.get('red')
+		const token = Cookies.get(TOKEN)
 		if (!token) {
 			setIsAuth(false)
 		}
