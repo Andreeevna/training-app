@@ -1,9 +1,11 @@
 import { useMutation } from '@tanstack/react-query'
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 import { useAuth } from '../../../hooks/useAuth'
+
+import authServices from '../../../services/auth.services'
 
 export const useAuthPage = () => {
 	const [type, setType] = useState('login')
@@ -41,7 +43,15 @@ export const useAuthPage = () => {
 		mutate(data)
 	}
 
-	return useMemo(() => {
-		setType, register, handleSubmit, errors, isLoading, onSubmit
-	}, [errors, isLoading])
+	return useMemo(
+		() => ({
+			setType,
+			register,
+			handleSubmit,
+			errors,
+			isLoading,
+			onSubmit
+		}),
+		[errors, isLoading]
+	)
 }
