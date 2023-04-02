@@ -1,9 +1,13 @@
+import axios from 'axios'
 import Cookies from 'js-cookie'
 
+const API_URL = 'http://localhost:5000/api'
+const headers = {
+	'Content-Type': 'application/json',
+	Authorization: Cookies.get('red') ? `Bearer ${Cookies.get('red')}` : ''
+}
+
 export const $axios = axios.create({
-	baseUrl: '/api',
-	headers: {
-		'Content-Type': 'application/json',
-		Authorization: `Bearer ${Cookies.get('token')}`
-	}
+	baseURL: API_URL,
+	headers
 })

@@ -7,7 +7,7 @@ import NotFound from '../components/screens/not-found/NotFound'
 
 import { routes } from './routes.data'
 
-export const Router = () => {
+const Router = () => {
 	const { isAuth } = useAuth()
 
 	return (
@@ -30,3 +30,5 @@ export const Router = () => {
 		</BrowserRouter>
 	)
 }
+
+export default Router
