@@ -4,7 +4,9 @@ import React from 'react'
 import ExerciseServices from '../../../services/exercise/exercise.services'
 
 const NewExercise = () => {
-	const {} = useMutation(['create exercise'], () => ExerciseServices)
+	const { isSuccess, error } = useMutation(['create exercise'], body =>
+		ExerciseServices.create(body)
+	)
 	return <div>NewExercise</div>
 }
 
