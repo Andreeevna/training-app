@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-const API_URL = 'http://localhost:5000/api'
+const API_URL = `${import.meta.env.VITE_SERVER_URL}/api`
 const headers = {
 	'Content-Type': 'application/json',
 	Authorization: Cookies.get('red') ? `Bearer ${Cookies.get('red')}` : ''
