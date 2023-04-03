@@ -5,6 +5,7 @@ import Header from '../../layout/header/Header'
 import Loader from '../../ui/Loader'
 
 import styles from './Profile.module.scss'
+import Statistics from './statistics/Statistics'
 import { useProfile } from './useProfile'
 
 const Profile = () => {
@@ -36,6 +37,7 @@ const Profile = () => {
 						</>
 					)}
 				</div>
+				<Statistics />
 			</div>
 			<div
 				className='wrapper-inner-page'
