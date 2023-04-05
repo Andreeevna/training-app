@@ -7,7 +7,11 @@ class WorkoutService {
 		return $axios.get(`${WORKOUTS}`)
 	}
 
-	//	name, times, iconPath
+	async getById(id) {
+		return $axios.get(`${WORKOUTS}/${id}`)
+	}
+
+	//	name, exerciseId
 	async create(body) {
 		return $axios.post(`${WORKOUTS}`, body)
 	}
