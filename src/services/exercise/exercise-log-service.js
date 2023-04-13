@@ -1,6 +1,6 @@
 import { $axios } from '../../api'
 
-import { EXERCISES } from './exercise.service'
+import { EXERCISES } from './exercise.services'
 
 const LOG = `${EXERCISES}/log`
 

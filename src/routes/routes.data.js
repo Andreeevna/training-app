@@ -35,13 +35,11 @@ export const routes = [
 
 	{
 		path: '/workout/:id',
-
 		component: Workout,
 		auth: true
 	},
 	{
 		path: '/workouts',
-
 		component: ListWorkouts,
 		auth: true
 	}

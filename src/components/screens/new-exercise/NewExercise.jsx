@@ -1,9 +1,8 @@
 import { useMutation } from '@tanstack/react-query'
 import cn from 'clsx'
-import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
-import ExerciseServices from '../../../services/exercise/exercise.services'
+import ExerciseService from '../../../services/exercise/exercise.services'
 import Layout from '../../layout/Layout'
 import Loader from '../../ui/Loader'
 import Alert from '../../ui/alert/Alert'
@@ -11,7 +10,7 @@ import Button from '../../ui/button/Button'
 import Field from '../../ui/field/Field'
 
 import styles from './NewExercise.module.scss'
-import { getIconPath } from './iconPath'
+import { getIconPath } from './iconPath.js'
 
 const data = ['chest', 'shoulders', 'biceps', 'legs', 'hit', 'back']
 
@@ -28,7 +27,7 @@ const NewExercise = () => {
 
 	const { isSuccess, error, isLoading, mutate } = useMutation(
 		['create exercise'],
-		body => ExerciseServices.create(body),
+		body => ExerciseService.create(body),
 		{
 			onSuccess: () => {
 				reset()
@@ -38,7 +37,6 @@ const NewExercise = () => {
 
 	const onSubmit = data => {
 		mutate(data)
-		// console.log(data)
 	}
 
 	return (

@@ -2,8 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import cn from 'clsx'
 import { useParams } from 'react-router-dom'
 
-import WorkoutLogServices from '../../../services/workout/workout-log.services'
-// import WorkoutLogService from '../../../services/workout/workout-log.service.js'
+import WorkoutLogService from '../../../services/workout/workout-log.service.js'
 import stylesLayout from '../../layout/Layout.module.scss'
 import Header from '../../layout/header/Header'
 
@@ -16,7 +15,7 @@ const Workout = () => {
 		data: workoutLog,
 		isSuccess,
 		isLoading
-	} = useQuery(['get workout log', id], () => WorkoutLogServices.getById(id), {
+	} = useQuery(['get workout log', id], () => WorkoutLogService.getById(id), {
 		select: ({ data }) => data
 	})
 
