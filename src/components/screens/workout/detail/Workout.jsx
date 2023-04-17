@@ -1,8 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
+import { Fragment } from 'react'
 import { useParams } from 'react-router-dom'
 
 import WorkoutLogService from '../../../../services/workout/workout-log.service.js'
+import Loader from '../../../ui/Loader.jsx'
 
+import ExerciseItem from './ExerciseItem.jsx'
+import styles from './Workout.module.scss'
 import WorkoutHeader from './WorkoutHeader.jsx'
 
 const Workout = () => {
@@ -26,6 +30,21 @@ const Workout = () => {
 				<div style={{ width: '90%', margin: '0 auto' }}>
 					{/* {errorCompleted && <Alert type='error' text={errorCompleted} />} */}
 				</div>
+				{isLoading ? (
+					<Loader />
+				) : (
+					<div className={styles.wrapper}>
+						{workoutLog?.exerciseLogs?.map((exerciseLog, index) => (
+							<Fragment key={exerciseLog.id}>
+								<ExerciseItem exerciseLog={exerciseLog} />
+								{index % 2 !== 0 &&
+									index !== workoutLog.exerciseLogs.length - 1 && (
+										<div className={styles.line} />
+									)}
+							</Fragment>
+						))}
+					</div>
+				)}
 			</div>
 		</>
 	)

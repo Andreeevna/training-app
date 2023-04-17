@@ -2,6 +2,8 @@ import cn from 'clsx'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import styles from './Workout.module.scss'
+
 const ExerciseItem = ({ exerciseLog }) => {
 	const navigation = useNavigate()
 
