@@ -30,7 +30,7 @@ const Workout = () => {
 			>
 				<Header backLink='/workouts' />
 
-				{isSuccess && (
+				{isSuccess && workoutLog.isAnyLogsExisted && (
 					<div>
 						<time className={styles.time}>{workoutLog.minute + ' min.'}</time>
 						<h1 className={stylesLayout.heading}>{workoutLog.workout.name}</h1>

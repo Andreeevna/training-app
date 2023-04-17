@@ -11,14 +11,14 @@ import { useNewWorkout } from './useNewWorkout'
 
 const NewWorkout = () => {
 	const {
-		register,
-		handleSubmit,
-		errors,
 		control,
-		isSuccess,
 		error,
+		errors,
+		handleSubmit,
 		isLoading,
-		onSubmit
+		isSuccess,
+		onSubmit,
+		register
 	} = useNewWorkout()
 
 	return (

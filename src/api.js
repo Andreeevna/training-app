@@ -7,7 +7,17 @@ const headers = {
 	Authorization: Cookies.get('red') ? `Bearer ${Cookies.get('red')}` : ''
 }
 
-export const $axios = axios.create({
+export let $axios = axios.create({
 	baseURL: API_URL,
 	headers
 })
+
+export const recreate$axios = () => {
+	$axios = axios.create({
+		baseURL: API_URL,
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: Cookies.get('red') ? `Bearer ${Cookies.get('red')}` : ''
+		}
+	})
+}

@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 
-import WorkoutServices from '../../../services/workout/workout.services'
+import workoutServices from '../../../services/workout/workout.services'
 
 export const useNewWorkout = () => {
 	const {
@@ -17,7 +17,7 @@ export const useNewWorkout = () => {
 
 	const { isSuccess, error, isLoading, mutate } = useMutation(
 		['create workout'],
-		body => WorkoutServices.create(body),
+		body => workoutServices.create(body),
 		{
 			onSuccess: () => {
 				reset({

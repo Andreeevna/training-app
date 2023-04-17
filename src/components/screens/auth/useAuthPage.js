@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { useAuth } from '../../../hooks/useAuth'
 
+import { recreate$axios } from '../../../api'
 import authServices from '../../../services/auth.services'
 
 export const useAuthPage = () => {
@@ -34,6 +35,7 @@ export const useAuthPage = () => {
 		{
 			onSuccess: () => {
 				setIsAuth(true)
+				recreate$axios()
 				reset()
 			}
 		}
