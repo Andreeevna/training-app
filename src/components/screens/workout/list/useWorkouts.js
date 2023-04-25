@@ -2,14 +2,16 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 
 import WorkoutLogService from '../../../../services/workout/workout-log.service'
-import WorkoutService from '../../../../services/workout/workout.service'
+import WorkoutServices from '../../../../services/workout/workout.services'
 
 export const useWorkouts = () => {
 	const { data, isSuccess } = useQuery(
 		['get workouts'],
-		() => WorkoutService.getAll(),
+		() => WorkoutServices.getAll(),
 		{
-			select: ({ data }) => data
+			select: ({ data }) => {
+				return data
+			}
 		}
 	)
 
@@ -23,9 +25,11 @@ export const useWorkouts = () => {
 	} = useMutation(
 		['Create new workout log'],
 		workoutId => WorkoutLogService.create(workoutId),
+
 		{
 			onSuccess({ data }) {
 				navigate(`/workout/${data.id}`)
+				console.log(data)
 			}
 		}
 	)

@@ -7,7 +7,7 @@ import WorkoutItem from './WorkoutItem'
 import { useWorkouts } from './useWorkouts'
 
 const ListWorkouts = () => {
-	const { data, error, isLoading, isSuccess, isSuccessMutate, mutate } =
+	const { data, isSuccess, mutate, isLoading, isSuccessMutate, error } =
 		useWorkouts()
 
 	return (
@@ -23,9 +23,14 @@ const ListWorkouts = () => {
 				{isLoading && <Loader />}
 				{isSuccess && (
 					<div className={styles.wrapper}>
-						{data.map(workout => (
-							<WorkoutItem key={workout.id} workout={workout} mutate={mutate} />
-						))}
+						{data &&
+							data.map(workout => (
+								<WorkoutItem
+									key={workout.id}
+									workout={workout}
+									mutate={mutate}
+								/>
+							))}
 					</div>
 				)}
 
