@@ -1,9 +1,10 @@
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { Fragment } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import WorkoutLogService from '../../../../services/workout/workout-log.service.js'
 import Loader from '../../../ui/Loader.jsx'
+import Button from '../../../ui/button/Button.jsx'
 
 import ExerciseItem from './ExerciseItem.jsx'
 import styles from './Workout.module.scss'
@@ -11,6 +12,8 @@ import WorkoutHeader from './WorkoutHeader.jsx'
 
 const Workout = () => {
 	const { id } = useParams()
+
+	const navigate = useNavigate()
 
 	const {
 		data: workoutLog,
@@ -20,6 +23,16 @@ const Workout = () => {
 		select: ({ data }) => data
 	})
 
+	const { mutate } = useMutation(
+		['complete workout'],
+		() => WorkoutLogService.complete(id),
+		{
+			onSuccess() {
+				navigate('/workouts')
+			}
+		}
+	)
+
 	return (
 		<>
 			<WorkoutHeader workoutLog={workoutLog} isSuccess={isSuccess} />
@@ -27,9 +40,7 @@ const Workout = () => {
 				className='wrapper-inner-page'
 				style={{ paddingLeft: 0, paddingRight: 0 }}
 			>
-				<div style={{ width: '90%', margin: '0 auto' }}>
-					{/* {errorCompleted && <Alert type='error' text={errorCompleted} />} */}
-				</div>
+				<div style={{ width: '90%', margin: '0 auto' }}></div>
 				{isLoading ? (
 					<Loader />
 				) : (
@@ -45,6 +56,7 @@ const Workout = () => {
 						))}
 					</div>
 				)}
+				<Button clickHandler={() => mutate()}>Complete workout</Button>
 			</div>
 		</>
 	)
