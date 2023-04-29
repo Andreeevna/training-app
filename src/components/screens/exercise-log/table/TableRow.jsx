@@ -25,7 +25,6 @@ const TableRow = ({ item, getState, onChangeState, toggleTime }) => {
 					pattern='[0-9]*'
 					value={getState(item.id, 'weight')}
 					onChange={e => onChangeState(item.id, 'weight', e.target.value)}
-					defaultValue={item.weight}
 					disabled={item.isCompleted}
 				/>
 				<i>kg{item.isCompleted && ' '}/</i>
@@ -33,7 +32,6 @@ const TableRow = ({ item, getState, onChangeState, toggleTime }) => {
 					type='number'
 					value={getState(item.id, 'repeat')}
 					onChange={e => onChangeState(item.id, 'repeat', e.target.value)}
-					defaultValue={item.repeat}
 					disabled={item.isCompleted}
 				/>
 			</div>

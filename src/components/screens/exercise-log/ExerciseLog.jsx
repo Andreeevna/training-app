@@ -1,4 +1,3 @@
-import { useCompleteLog } from './hooks/useCompleteLog'
 import { useExerciseLog } from './hooks/useExerciseLog'
 
 import Loader from '../../ui/Loader'
@@ -21,7 +20,6 @@ const ExerciseLog = () => {
 		toggleTime
 	} = useExerciseLog()
 
-	const { completeLog, errorCompleted } = useCompleteLog()
 	return (
 		<>
 			<HeaderExerciseLog exerciseLog={exerciseLog} isSuccess={isSuccess} />
