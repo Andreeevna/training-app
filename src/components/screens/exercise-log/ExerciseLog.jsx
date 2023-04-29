@@ -1,6 +1,5 @@
 import { useCompleteLog } from './hooks/useCompleteLog'
 import { useExerciseLog } from './hooks/useExerciseLog'
-import { useUpdateLogTime } from './hooks/useUpdateLogTime'
 
 import Loader from '../../ui/Loader'
 import Alert from '../../ui/alert/Alert'
@@ -12,9 +11,16 @@ import TableHeader from './table/TableHeader'
 import TableRow from './table/TableRow'
 
 const ExerciseLog = () => {
-	const { exerciseLog, isLoading, isSuccess } = useExerciseLog()
+	const {
+		exerciseLog,
+		isLoading,
+		isSuccess,
+		error,
+		getState,
+		onChangeState,
+		toggleTime
+	} = useExerciseLog()
 
-	const { errorChange, updateTime } = useUpdateLogTime()
 	const { completeLog, errorCompleted } = useCompleteLog()
 	return (
 		<>
@@ -23,7 +29,7 @@ const ExerciseLog = () => {
 				className='wrapper-inner-page'
 				style={{ paddingLeft: 0, paddingRight: 0 }}
 			>
-				<ExerciseError errors={[errorChange, errorCompleted]} />
+				<ExerciseError errors={[error]} />
 
 				{isLoading ? (
 					<Loader />
@@ -31,7 +37,13 @@ const ExerciseLog = () => {
 					<div className={styles.wrapper}>
 						<TableHeader />
 						{exerciseLog?.times.map(item => (
-							<TableRow item={item} key={item.id} />
+							<TableRow
+								getState={getState}
+								onChangeState={onChangeState}
+								toggleTime={toggleTime}
+								item={item}
+								key={item.id}
+							/>
 						))}
 					</div>
 				)}

@@ -2,7 +2,7 @@ import cn from 'clsx'
 
 import styles from '../ExerciseLog.module.scss'
 
-const TableRow = ({ item }) => {
+const TableRow = ({ item, getState, onChangeState, toggleTime }) => {
 	return (
 		<div
 			className={cn(styles.row, {
@@ -23,12 +23,16 @@ const TableRow = ({ item }) => {
 				<input
 					type='tel'
 					pattern='[0-9]*'
+					value={getState(item.id, 'weight')}
+					onChange={e => onChangeState(item.id, 'weight', e.target.value)}
 					defaultValue={item.weight}
 					disabled={item.isCompleted}
 				/>
 				<i>kg{item.isCompleted && ' '}/</i>
 				<input
 					type='number'
+					value={getState(item.id, 'repeat')}
+					onChange={e => onChangeState(item.id, 'repeat', e.target.value)}
 					defaultValue={item.repeat}
 					disabled={item.isCompleted}
 				/>
@@ -37,12 +41,15 @@ const TableRow = ({ item }) => {
 			<div key={`Completed ${item.id}/${item.isCompleted}`}>
 				<img
 					src={
-						item.isCompleted
+						getState(item.id, 'isCompleted')
 							? '/images/exercises/check-completed.svg'
 							: '/images/exercises/check.svg'
 					}
 					className={styles.checkbox}
 					alt=''
+					onClick={() => {
+						toggleTime(item.id, !getState(item.id, 'isCompleted'))
+					}}
 				/>
 			</div>
 		</div>
